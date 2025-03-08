@@ -5,3 +5,4 @@ trousers, панталони
 father, татко
 desk, маса
 chair, столица
+car, автомобил
