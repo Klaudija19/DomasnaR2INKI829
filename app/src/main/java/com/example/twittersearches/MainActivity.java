@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -16,10 +17,13 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText tagEditText;
     private EditText queryEditText;
-    private Button saveButton, clearTagsButton;
+    private EditText searchEditText; // Поле за пребарување во речникот
+    private Button saveButton, clearTagsButton, searchButton; // Додадено копче за пребарување
     private LinearLayout tagsContainer;
+    private TextView resultTextView; // Текст за приказ на резултатот
 
     private Map<String, String> searches = new LinkedHashMap<>();
+    private Map<String, String> dictionary = new LinkedHashMap<>(); // Речникот
     private String currentlyEditingTag = null;
 
     @Override
@@ -29,9 +33,12 @@ public class MainActivity extends AppCompatActivity {
 
         tagEditText = findViewById(R.id.tagEditText);
         queryEditText = findViewById(R.id.queryEditText);
+        searchEditText = findViewById(R.id.searchEditText); // Инициализација на полето за пребарување
         saveButton = findViewById(R.id.saveButton);
         clearTagsButton = findViewById(R.id.clearTagsButton);
+        searchButton = findViewById(R.id.searchButton); // Инициализација на копчето за пребарување
         tagsContainer = findViewById(R.id.tagsContainer);
+        resultTextView = findViewById(R.id.resultTextView); // Инициализација на текстот за резултати
 
         // Додавање на почетни тагови
         addTag("AndroidFP", "https://twitter.com/search?q=AndroidFP");
@@ -40,6 +47,15 @@ public class MainActivity extends AppCompatActivity {
         addTag("iPhoneFP", "https://twitter.com/search?q=iPhoneFP");
         addTag("JavaFP", "https://twitter.com/search?q=JavaFP");
         addTag("JavaHTP", "https://twitter.com/search?q=JavaHTP");
+
+        // Додадете зборови во речникот
+        addWordToDictionary("sample", "пример");
+        addWordToDictionary("morning", "утро");
+        addWordToDictionary("hello", "здраво");
+        addWordToDictionary("trousers", "панталони");
+        addWordToDictionary("father", "татко");
+        addWordToDictionary("desk", "маса");
+        addWordToDictionary("chair", "столица");
 
         saveButton.setOnClickListener(view -> {
             String tag = tagEditText.getText().toString().trim();
@@ -60,6 +76,16 @@ public class MainActivity extends AppCompatActivity {
         clearTagsButton.setOnClickListener(view -> {
             tagsContainer.removeAllViews();
             searches.clear();
+        });
+
+        searchButton.setOnClickListener(view -> {
+            String searchWord = searchEditText.getText().toString().trim();
+            String result = dictionary.get(searchWord);
+            if (result != null) {
+                resultTextView.setText(result); // Прикажи превод
+            } else {
+                resultTextView.setText("Превод не пронајден."); // Прикажи порака ако не е пронајден
+            }
         });
     }
 
@@ -121,4 +147,11 @@ public class MainActivity extends AppCompatActivity {
             tagsContainer.addView(tagLayout);
         }
     }
+
+    // Додадете збор во речникот
+    private void addWordToDictionary(String englishWord, String macedonianWord) {
+        dictionary.put(englishWord, macedonianWord);
+        dictionary.put(macedonianWord, englishWord); // Додадете и обратно
+    }
 }
+

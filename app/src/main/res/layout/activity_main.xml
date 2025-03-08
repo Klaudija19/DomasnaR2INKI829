@@ -1,94 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
     android:background="@color/dark_orange">
 
-    <!-- Наслов -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Favorite Twitter Searches"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:paddingBottom="10dp"
-        android:textColor="@android:color/white"/>
-
-    <!-- Поле за внесување таг -->
-    <EditText
-        android:id="@+id/tagEditText"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint="Enter tag"
-        android:background="@android:color/white"
-        android:padding="10dp"
-        android:layout_marginBottom="8dp"/>
-
-    <!-- Линија за внесување пребарување и Save копче -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
-
-        <EditText
-            android:id="@+id/queryEditText"
-            android:layout_width="0dp"
-            android:layout_weight="2"
-            android:layout_height="50dp"
-            android:hint="Enter search query"
-            android:background="@android:color/white"
-            android:padding="10dp"/>
-
-        <Button
-            android:id="@+id/saveButton"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="50dp"
-            android:text="Save"
-            android:background="@android:color/holo_blue_dark"
-            android:textColor="@android:color/white"
-            android:layout_marginLeft="8dp"/>
-    </LinearLayout>
-
-    <!-- Tagged Searches секција -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@color/light_orange"
-        android:padding="8dp"
-        android:layout_marginTop="16dp">
+        android:padding="16dp">
 
+        <!-- Наслов -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tagged Searches"
-            android:textSize="18sp"
+            android:text="Favorite Twitter Searches"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="@android:color/black"
-            android:paddingBottom="5dp"/>
+            android:gravity="center"
+            android:paddingBottom="10dp"
+            android:textColor="@android:color/white"/>
 
+        <!-- Поле за внесување таг -->
+        <EditText
+            android:id="@+id/tagEditText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Enter tag"
+            android:background="@android:color/white"
+            android:padding="10dp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Линија за внесување пребарување и Save копче -->
         <LinearLayout
-            android:id="@+id/tagsContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"/>
-    </LinearLayout>
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
-    <!-- Clear Tags копче -->
-    <Button
-        android:id="@+id/clearTagsButton"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Clear Tags"
-        android:background="@android:color/holo_red_dark"
-        android:textColor="@android:color/white"
-        android:layout_marginTop="10dp"/>
-</LinearLayout>
+            <EditText
+                android:id="@+id/queryEditText"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="50dp"
+                android:hint="Enter search query"
+                android:background="@android:color/white"
+                android:padding="10dp"/>
+
+            <Button
+                android:id="@+id/saveButton"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:text="Save"
+                android:background="@android:color/holo_blue_dark"
+                android:textColor="@android:color/white"
+                android:layout_marginLeft="8dp"/>
+        </LinearLayout>
+
+        <!-- Tagged Searches секција -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/light_orange"
+            android:padding="8dp"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tagged Searches"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:paddingBottom="5dp"/>
+
+            <LinearLayout
+                android:id="@+id/tagsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"/>
+        </LinearLayout>
+
+        <!-- Clear Tags копче -->
+        <Button
+            android:id="@+id/clearTagsButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Clear Tags"
+            android:background="@android:color/holo_red_dark"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="10dp"
+            android:padding="15dp"/>
+
+        <!-- Поле за пребарување -->
+        <EditText
+            android:id="@+id/searchEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Search in Dictionary"
+            android:background="@android:color/white"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"/>
+
+        <!-- Search копче -->
+        <Button
+            android:id="@+id/searchButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Search"
+            android:background="@android:color/holo_green_dark"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="8dp"/>
+
+        <!-- Приказ на резултат -->
+        <TextView
+            android:id="@+id/resultTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@android:color/black"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"/>
+
+    </LinearLayout>
+</ScrollView>
+
+
 
 
 
